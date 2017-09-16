@@ -18,7 +18,6 @@ public:
 	unsigned int js_state;
 	unsigned int jump_count;
 	unsigned int landing_count;
-	unsigned int repeat_js_seq;
 	unsigned int not_jump_count;
 	
 	unsigned int cant_walk_imgs;
@@ -26,9 +25,10 @@ public:
 
 	ALLEGRO_BITMAP ** jump_img_lib;
 	ALLEGRO_BITMAP ** walk_img_lib;
-	//unsigned int cant_images;
+
 	string prefix_walk;
 	string prefix_jump;
+
 	graphic_movement();
 	void init();
 	void create_images_arr();

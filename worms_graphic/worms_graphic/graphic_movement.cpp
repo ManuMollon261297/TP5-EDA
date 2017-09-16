@@ -1,7 +1,6 @@
 #include "graphic_movement.h"
 
 enum { NOMOTION, WARMUP, WALKING };
-const unsigned int cant_images = 15;
 const unsigned int wwalkingseq_arr[14] = { 4,5,6,7,8,9,10,11,11,12,13,14,15,4 };
 // el salto tarda 33 frames y el resto (o sea 50-33) los hago con las animaciones de "aterrizaje"
 const unsigned int wjumpingseq_arr[11] = { 1,2,3,3,3,3,3,3,3,3,3 };
@@ -14,37 +13,52 @@ graphic_movement::graphic_movement()
 };
 
 void graphic_movement::create_images_arr() {
+
 	walk_img_lib = new ALLEGRO_BITMAP*[cant_walk_imgs];
 	jump_img_lib = new ALLEGRO_BITMAP*[cant_jump_imgs];
 }
 
 void graphic_movement::init() {
+	
 	prefix_walk = "Worms Images/wwalking/wwalk-F";
 	prefix_jump = "Worms Images/wjump/wjump-F";
 	walking_count = 0;
 	no_motion_count = 0;
+	landing_count = 0;
 	not_jump_count = 0;
 	jump_count = 0;
 	warmup_count = 0;
 	ws_state = 0;
+	js_state = 0;
 	repeat_ws_seq = 3;
-	repeat_js_seq = 3;
 
 	cant_walk_imgs=15;
 	cant_jump_imgs=10;
-	for (unsigned int i = 0; i < cant_images; i++) {
+	for (unsigned int i = 0; i < cant_walk_imgs; i++) {
 		walk_img_lib[i] = nullptr;
-
 	}
+
+	for (unsigned int i = 0; i < cant_jump_imgs; i++) {
+		jump_img_lib[i] = nullptr;
+	}
+
+
 }
 
 graphic_movement::~graphic_movement()
 {
-	for (int i = 0; i < cant_images; i++) {
+	/*
+	for (int i = 0; i < cant_walk_imgs; i++) {
 		al_destroy_bitmap(walk_img_lib[i]);
 	}
+	for (int i = 0; i < cant_jump_imgs; i++) {
+		al_destroy_bitmap(jump_img_lib[i]);
+	}
 
+	
 	delete[] walk_img_lib;
+	delete[] jump_img_lib;
+	*/
 }
 
 
@@ -102,7 +116,7 @@ void graphic_movement::do_jumping_step() {
 		else {
 			landing_count = 0;
 			js_state = NOT_JUMPING;
-			repeat_js_seq = 3;
+			//repeat_js_seq = 3;
 		}
 
 		break;
@@ -125,7 +139,7 @@ void graphic_movement::do_walking_step() {
 		break;
 	case WARMUP:
 		if (warmup_count < 3) {
-			al_draw_bitmap(walk_img_lib[warmup_count], 100.0, 100.0, 0);
+			al_draw_bitmap(walk_img_lib[warmup_count], 200.0, 200.0, 0);
 			printf("K=%d",warmup_count);
 			warmup_count++;
 		}
@@ -138,7 +152,7 @@ void graphic_movement::do_walking_step() {
 	case WALKING:
 		if (walking_count < 14){ // Tengo la secuencia de 15 imagenes y como itero en un array i llega a 14
 			
-			al_draw_bitmap(walk_img_lib[wwalkingseq_arr[walking_count] - 1], 100.0, 100.0, 0);
+			al_draw_bitmap(walk_img_lib[wwalkingseq_arr[walking_count] - 1], 200.0, 200.0, 0);
 			walking_count++;
 			if (walking_count == 14 && repeat_ws_seq) {
 				walking_count = 0;

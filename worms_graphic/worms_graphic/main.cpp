@@ -8,10 +8,14 @@ const float FPS = 50.0;
 
 int main(void) {
 
-	al_init();
-
 	ALLEGRO_DISPLAY * display = nullptr;
 	ALLEGRO_EVENT_QUEUE *	event_queue = nullptr;
+	ALLEGRO_TIMER * timer = nullptr;
+
+
+	if (!al_init()) {
+		return -1;
+	}
 
 	display = al_create_display(800, 600);
 
@@ -19,11 +23,9 @@ int main(void) {
 		return -1;
 	}
 
-	ALLEGRO_TIMER * timer = nullptr;
-
+	
 	timer = al_create_timer(1.0 / FPS);
 	if (!timer) {
-		fprintf(stderr, "failed to create timer!\n");
 		return -1;
 	}
 
@@ -33,7 +35,6 @@ int main(void) {
 
 	event_queue = al_create_event_queue();
 	if (!event_queue) {
-		fprintf(stderr, "failed to create event_queue!\n");
 		al_destroy_display(display);
 		al_destroy_timer(timer);
 		return -1;
@@ -42,39 +43,43 @@ int main(void) {
 	al_start_timer(timer);
 
 	al_register_event_source(event_queue, al_get_display_event_source(display));
-
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
 
 	graphic_movement graphic_handler;
 
+	
 	graphic_handler.create_images_arr();
+	
 	graphic_handler.init();
+
+	
 	graphic_handler.load_images(graphic_handler.prefix_walk, graphic_handler.walk_img_lib, graphic_handler.cant_walk_imgs);
+	
 	graphic_handler.load_images(graphic_handler.prefix_jump, graphic_handler.jump_img_lib, graphic_handler.cant_jump_imgs);
+	
+	
 	ALLEGRO_EVENT evs;
 
 	int exit = 0;
 
-	do {
+	while (!exit) {
 		if (al_get_next_event(event_queue, &evs)) {
-			// if event comesup
-			if (evs.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+
+			switch (evs.type) {
+			case ALLEGRO_EVENT_DISPLAY_CLOSE:
 				exit = 1;
-			}
-			else {
-				if (evs.type == ALLEGRO_EVENT_TIMER) {
-					//graphic_handler.do_walking_step();
-					graphic_handler.do_jumping_step();
-					al_flip_display();
-				}
+				break;
+			case ALLEGRO_EVENT_TIMER:
+				graphic_handler.do_walking_step();
+				graphic_handler.do_jumping_step();
+				al_flip_display();
+				break;
 			}
 		}
+	}
 	
-
-	} while (!exit);
-	
-	al_destroy_display(display);
+	//al_destroy_display(display);
 
 	system("pause");
 	return 0;
