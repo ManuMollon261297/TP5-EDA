@@ -32,9 +32,10 @@ public:
 	graphic_movement();
 	void init();
 	void create_images_arr();
-	void load_images(string prefix, ALLEGRO_BITMAP ** imglib, unsigned int cant_img);
+	void load_walk_imgs();
 	void do_walking_step();
 	void do_jumping_step();
+	void load_jump_imgs();
 
 	~graphic_movement();
 };

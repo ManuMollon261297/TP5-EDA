@@ -63,16 +63,28 @@ graphic_movement::~graphic_movement()
 
 
 
-void graphic_movement::load_images(string prefix,ALLEGRO_BITMAP ** imglib, unsigned int cant_img) {
+void graphic_movement::load_walk_imgs() {
 
-	for (unsigned int i = 0; i < cant_img; i++) { // el 1 es por F1, F2.. etc
+	for (unsigned int i = 0; i < cant_walk_imgs; i++) { // el 1 es por F1, F2.. etc
 		string extension = ".png";
-		string aux = prefix+ to_string(i+1) + extension;
+		string aux = prefix_walk + to_string(i+1) + extension;
 		printf("%s\n", &aux[0]);
-		imglib[i] = al_load_bitmap(&aux[0]);
+		walk_img_lib[i] = al_load_bitmap(&aux[0]);
 
 	}
 }
+
+void graphic_movement::load_jump_imgs() {
+
+	for (unsigned int i = 0; i < cant_jump_imgs; i++) { // el 1 es por F1, F2.. etc
+		string extension = ".png";
+		string aux = prefix_jump + to_string(i + 1) + extension;
+		printf("%s\n", &aux[0]);
+		jump_img_lib[i] = al_load_bitmap(&aux[0]);
+
+	}
+}
+
 
 void graphic_movement::do_jumping_step() {
 	switch (js_state) {

@@ -45,20 +45,25 @@ int main(void) {
 	al_register_event_source(event_queue, al_get_display_event_source(display));
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
-
+	/*
+	ALLEGRO_BITMAP * fixer = nullptr;
+	fixer = al_load_bitmap("image.jpg");
+	al_draw_bitmap(fixer, 400, 400, 0);
+	*/
 	graphic_movement graphic_handler;
-
 	
 	graphic_handler.create_images_arr();
 	
 	graphic_handler.init();
 
 	
-	graphic_handler.load_images(graphic_handler.prefix_walk, graphic_handler.walk_img_lib, graphic_handler.cant_walk_imgs);
-	
-	graphic_handler.load_images(graphic_handler.prefix_jump, graphic_handler.jump_img_lib, graphic_handler.cant_jump_imgs);
-	
-	
+	graphic_handler.load_jump_imgs();
+	graphic_handler.load_walk_imgs();
+
+	// revisar cada al_draw_bitmap
+
+
+
 	ALLEGRO_EVENT evs;
 
 	int exit = 0;
