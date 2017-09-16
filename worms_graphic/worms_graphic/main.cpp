@@ -1,7 +1,7 @@
 #include <iostream>
 #include <allegro5\allegro5.h>
 #include <allegro5\allegro_image.h>
-#include "graphic.h"
+#include "graphic_movement.h"
 
 
 const float FPS = 50.0;
@@ -46,15 +46,14 @@ int main(void) {
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
 
-	graphic graphic_handler;
+	graphic_movement graphic_handler;
 
 	graphic_handler.create_images_arr();
 	graphic_handler.init();
-	graphic_handler.load_images();
-
+	graphic_handler.load_images(graphic_handler.prefix_walk, graphic_handler.walk_img_lib, graphic_handler.cant_walk_imgs);
+	graphic_handler.load_images(graphic_handler.prefix_jump, graphic_handler.jump_img_lib, graphic_handler.cant_jump_imgs);
 	ALLEGRO_EVENT evs;
 
-	// 0 no move , 1 moving
 	int exit = 0;
 
 	do {
@@ -65,7 +64,8 @@ int main(void) {
 			}
 			else {
 				if (evs.type == ALLEGRO_EVENT_TIMER) {
-					graphic_handler.do_walking_step();
+					//graphic_handler.do_walking_step();
+					graphic_handler.do_jumping_step();
 					al_flip_display();
 				}
 			}
