@@ -123,11 +123,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="graphic_movement.cpp" />
+    <ClCompile Include="jump_move.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="walk_move.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="graphic_movement.h" />
+    <ClInclude Include="jump_move.h" />
+    <ClInclude Include="walk_move.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -18,12 +18,18 @@
     <ClCompile Include="main.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="graphic_movement.cpp">
+    <ClCompile Include="jump_move.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="walk_move.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="graphic_movement.h">
+    <ClInclude Include="jump_move.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="walk_move.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

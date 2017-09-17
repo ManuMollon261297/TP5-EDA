@@ -1,8 +1,12 @@
 #include <iostream>
 #include <allegro5\allegro5.h>
 #include <allegro5\allegro_image.h>
-#include "graphic_movement.h"
 
+
+#include "walk_move.h"
+#include "jump_move.h"
+
+using namespace std;
 
 const float FPS = 50.0;
 
@@ -45,26 +49,19 @@ int main(void) {
 	al_register_event_source(event_queue, al_get_display_event_source(display));
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
-	/*
-	ALLEGRO_BITMAP * fixer = nullptr;
-	fixer = al_load_bitmap("image.jpg");
-	al_draw_bitmap(fixer, 400, 400, 0);
-	*/
-	graphic_movement graphic_handler;
-	
-	graphic_handler.create_images_arr();
-	
-	graphic_handler.init();
 
-	
-	graphic_handler.load_jump_imgs();
-	graphic_handler.load_walk_imgs();
+	jump_move jmv;
+	jmv.init_jump_vars();
+	jmv.load_jump_imgs();
 
-	// revisar cada al_draw_bitmap
-
+	walk_move wmv;
+	wmv.init_walk_vars();
+	wmv.load_walk_imgs();
 
 
 	ALLEGRO_EVENT evs;
+
+
 
 	int exit = 0;
 
@@ -76,15 +73,22 @@ int main(void) {
 				exit = 1;
 				break;
 			case ALLEGRO_EVENT_TIMER:
-				graphic_handler.do_walking_step();
-				graphic_handler.do_jumping_step();
+
+				wmv.do_walking_step();
+				jmv.do_jumping_step();
+				wmv.px++;
+				wmv.py++;
+				jmv.px++;
+				jmv.py++;
+				
+				jmv.orientation = 1;
 				al_flip_display();
 				break;
 			}
 		}
 	}
 	
-	//al_destroy_display(display);
+	al_destroy_display(display);
 
 	system("pause");
 	return 0;
