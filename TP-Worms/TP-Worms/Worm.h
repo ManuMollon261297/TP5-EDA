@@ -1,12 +1,18 @@
 #pragma once
 #include "Physics.h"
 
+enum { IDLE, MOVING, MONITOR_MOVING, END_MOVEMENT, JUMPING, END_JUMPING };
+
+struct position
+{
+	double x;
+	double y;
+};
 
 class Worm
 {
 public:
 	Worm();
-	enum { IDLE, MOVING, MONITOR_MOVING, END_MOVEMENT, JUMPING,END_JUMPING};
 	void setKeys(char right_,char left_, char up_);
 	void startMoving(void);
 	void stopMoving(void);
@@ -14,13 +20,9 @@ public:
 	void stopJumping(void);
 	void update(void);
 	char uData;
-
+	position getPos(void);
+	int getState(void);
 private:
-	struct position
-	{
-		double x;
-		double y;
-	};
 	position pos;
 	Physics physicsData;
 	bool sentido;

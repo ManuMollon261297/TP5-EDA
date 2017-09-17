@@ -90,11 +90,6 @@ int main(void)
 		ev = control.getNextEvent(event_queue);
 		if (ev.eventType != NO_EVENT)
 		{
-			if(ev.eventType != REFRESH)
-			{
-				cout << ev.eventType << endl;
-				cout << ev.ud << endl;
-			}
 			control.dispatch(ev, Worms, graphic_handler);
 		}
 	} while (ev.eventType != QUIT);

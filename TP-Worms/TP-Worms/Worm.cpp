@@ -113,3 +113,13 @@ void Worm::setKeys(char right_, char left_, char up_)
 	keys.right = right;
 	keys.up = up_;
 }
+
+position Worm::getPos()
+{
+	return pos;
+}
+
+int Worm::getState()
+{
+	return state;
+}
