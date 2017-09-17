@@ -1,7 +1,7 @@
 #include "Physics.h"
 
 
-Physics::Physics(static double gravity_, static double jumpAngle_, static double velocity_)
+Physics::Physics(double gravity_,double jumpAngle_,double velocity_)
 {
 	gravity = gravity_;
 	jumpAngle = jumpAngle_;
