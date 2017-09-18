@@ -13,48 +13,60 @@ Worm::Worm()
 
 void Worm::startMoving(void)
 {
-	if (state == IDLE)
+	if((uData == keys.left)||(uData == keys.right))
 	{
-		state = MONITOR_MOVING;
-		frameCount = 0;
-	}
-	else if (state == END_MOVEMENT)
-	{
-		state = MOVING;
+		if (state == IDLE)
+		{
+			state = MONITOR_MOVING;
+			frameCount = 0;
+		}
+		else if (state == END_MOVEMENT)
+		{
+			state = MOVING;
+		}
 	}
 }
 
 
 void Worm::stopMoving(void)
 {
-	if (state == MOVING)
+	if ((uData == keys.left) || (uData == keys.right))
 	{
-		state = END_MOVEMENT;
-	}
-	else if (state == MONITOR_MOVING)
-	{
-		state = IDLE;
+		if (state == MOVING)
+		{
+			state = END_MOVEMENT;
+		}
+		else if (state == MONITOR_MOVING)
+		{
+			state = IDLE;
+		}
 	}
 }
 
 void Worm::startJumping(void)
 {
-	if (state == IDLE)
+	if (uData == keys.up)
 	{
-		state = JUMPING;
-		frameCount = 0;
-	}
-	else if (state == END_JUMPING)
-	{
-		state = JUMPING;
+		if (state == IDLE)
+		{
+			state = JUMPING;
+			frameCount = 0;
+		}
+		else if (state == END_JUMPING)
+		{
+			state = JUMPING;
+		}
 	}
 }
 
 void Worm::stopJumping(void)
 {
-	if (state == JUMPING)
+	if (uData == keys.up)
 	{
-		state = END_JUMPING;
+		if (state == JUMPING)
+		{
+			state = END_JUMPING;
+		}
 	}
 }
 
@@ -80,7 +92,7 @@ void Worm::update(void)
 			{
 				sentido = right;
 			}
-			else if (uData == keys.left) // l y r son las flechas apretadas, que raducen a los chars nombrados
+			else if (uData == keys.left) // l y r son las flechas apretadas, que traducen a los chars nombrados
 			{
 				sentido = left;
 			}
@@ -110,7 +122,7 @@ void Worm::update(void)
 void Worm::setKeys(char right_, char left_, char up_)
 {
 	keys.left = left_;
-	keys.right = right;
+	keys.right = right_;
 	keys.up = up_;
 }
 
@@ -119,7 +131,17 @@ position Worm::getPos()
 	return pos;
 }
 
-int Worm::getState()
+unsigned int Worm::getState()
 {
 	return state;
+}
+
+unsigned int Worm::getFrameCount(void)
+{
+	return frameCount;
+}
+
+bool Worm::getSentido(void)
+{
+	return sentido;
 }

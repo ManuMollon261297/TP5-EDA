@@ -1,3 +1,13 @@
 ﻿  graphic_movement.cpp
+  Generating Code...
+  Compiling...
+  main.cpp
+  controller.cpp
+c:\users\manuel mollon\source\repos\tp5-eda\tp-worms\tp-worms\controller.cpp(11): warning C4018: '<': signed/unsigned mismatch
+c:\users\manuel mollon\source\repos\tp5-eda\tp-worms\tp-worms\controller.cpp(19): warning C4018: '<': signed/unsigned mismatch
+c:\users\manuel mollon\source\repos\tp5-eda\tp-worms\tp-worms\controller.cpp(27): warning C4018: '<': signed/unsigned mismatch
+c:\users\manuel mollon\source\repos\tp5-eda\tp-worms\tp-worms\controller.cpp(35): warning C4018: '<': signed/unsigned mismatch
+c:\users\manuel mollon\source\repos\tp5-eda\tp-worms\tp-worms\controller.cpp(44): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   TP-Worms.vcxproj -> C:\Users\Manuel Mollon\source\repos\TP5-EDA\TP-Worms\Debug\TP-Worms.exe
   TP-Worms.vcxproj -> C:\Users\Manuel Mollon\source\repos\TP5-EDA\TP-Worms\Debug\TP-Worms.pdb (Partial PDB)

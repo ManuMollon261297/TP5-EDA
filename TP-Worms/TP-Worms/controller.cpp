@@ -1,6 +1,8 @@
 #include "controller.h"
+#include <iostream>
 
-void controller::dispatch(Cevent ev, vector<Worm> Worms, graphic_movement graphic_handler)
+
+void controller::dispatch(Cevent ev, vector<Worm>& Worms, graphic_movement graphic_handler)
 {
 	switch (ev.eventType)
 	{
@@ -9,6 +11,7 @@ void controller::dispatch(Cevent ev, vector<Worm> Worms, graphic_movement graphi
 		for (int i = 0; i < Worms.size(); i++)
 		{
 			Worms[i].uData = ev.ud;
+
 			Worms[i].startMoving();
 		}
 	} break;
@@ -38,14 +41,16 @@ void controller::dispatch(Cevent ev, vector<Worm> Worms, graphic_movement graphi
 	} break;
 	case REFRESH:
 	{
+		graphic_handler.flip_background();
 		for (int i = 0; i < Worms.size(); i++)
 		{
-			Worms[i].uData = ev.ud;
 			Worms[i].update();
+			//agregar fondo
 			graphic_handler.do_walking_step(Worms[i]);
 			graphic_handler.do_jumping_step(Worms[i]);
-			al_flip_display();
+
 		}
+		al_flip_display();
 	} break;
 	}
 }
@@ -70,27 +75,27 @@ Cevent controller::getNextEvent(ALLEGRO_EVENT_QUEUE * event_queue)
 			{
 			case P1_LEFT:
 				events.eventType = PRESS_MOVE;
-				events.eventType = P1_LEFT;
+				events.ud = P1_LEFT;
 				break;
 			case P2_LEFT:
 				events.eventType = PRESS_MOVE;
-				events.eventType = P2_LEFT;
+				events.ud = P2_LEFT;
 				break;
 			case P1_RIGHT:
 				events.eventType = PRESS_MOVE;
-				events.eventType = P1_RIGHT;
+				events.ud = P1_RIGHT;
 				break;
 			case P2_RIGHT:
 				events.eventType = PRESS_MOVE;
-				events.eventType = P2_RIGHT;
+				events.ud = P2_RIGHT;
 				break;
 			case P1_UP:
 				events.eventType = PRESS_JUMP;
-				events.eventType = P1_UP;
+				events.ud = P1_UP;
 				break;
 			case P2_UP:
 				events.eventType = PRESS_JUMP;
-				events.eventType = P2_UP;
+				events.ud = P2_UP;
 				break;
 			}
 			break;
@@ -99,27 +104,27 @@ Cevent controller::getNextEvent(ALLEGRO_EVENT_QUEUE * event_queue)
 			{
 			case P1_LEFT:
 				events.eventType = RELEASE_MOVE;
-				events.eventType = P1_LEFT;
+				events.ud = P1_LEFT;
 				break;
 			case P2_LEFT:
 				events.eventType = RELEASE_MOVE;
-				events.eventType = P2_LEFT;
+				events.ud = P2_LEFT;
 				break;
 			case P1_RIGHT:
 				events.eventType = RELEASE_MOVE;
-				events.eventType = P1_RIGHT;
+				events.ud = P1_RIGHT;
 				break;
 			case P2_RIGHT:
 				events.eventType = RELEASE_MOVE;
-				events.eventType = P2_RIGHT;
+				events.ud = P2_RIGHT;
 				break;
 			case P1_UP:
 				events.eventType = RELEASE_JUMP;
-				events.eventType = P1_UP;
+				events.ud = P1_UP;
 				break;
 			case P2_UP:
 				events.eventType = RELEASE_JUMP;
-				events.eventType = P2_UP;
+				events.ud = P2_UP;
 				break;
 			}
 			break;

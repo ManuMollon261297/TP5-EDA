@@ -21,16 +21,17 @@ public:
 	void update(void);
 	char uData;
 	position getPos(void);
-	int getState(void);
+	unsigned int getState(void);
+	unsigned int getFrameCount(void);
+	bool getSentido(void);
+	const bool left = false;
+	const bool right = true;
 private:
 	position pos;
 	Physics physicsData;
 	bool sentido;
 	unsigned int frameCount;
 	unsigned int state;
-
-	const bool left = true;
-	const bool right = false;
 
 	struct data
 	{

@@ -16,7 +16,6 @@ public:
 	unsigned int walking_count;
 	unsigned int repeat_ws_seq;
 
-	unsigned int js_state;
 	unsigned int jump_count;
 	unsigned int landing_count;
 	unsigned int not_jump_count;

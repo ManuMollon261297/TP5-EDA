@@ -83,8 +83,8 @@ int main(void)
 	//termino inicializacion de allegro
 
 	vector<Worm> Worms(2);
-	Worms[0].setKeys('d', 'a', 'w');
-	Worms[1].setKeys('j','i','l'); //inicializar con las def de allegro
+	Worms[0].setKeys(P1_RIGHT, P1_LEFT, P1_UP);
+	Worms[1].setKeys(P2_RIGHT, P2_LEFT, P2_UP); //inicializar con las def de allegro
 	Cevent ev;
 	do {
 		ev = control.getNextEvent(event_queue);
