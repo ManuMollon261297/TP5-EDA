@@ -96,4 +96,5 @@ int main(void)
 
 	//cierro allegro
 	//al_destroy_display(display);
+	return 0;
 }

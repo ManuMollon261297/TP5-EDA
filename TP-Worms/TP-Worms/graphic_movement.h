@@ -9,16 +9,6 @@ class graphic_movement
 {
 
 public:
-
-	unsigned int no_motion_count;
-	unsigned int warmup_count;
-	unsigned int ws_state;
-	unsigned int walking_count;
-	unsigned int repeat_ws_seq;
-
-	unsigned int jump_count;
-	unsigned int landing_count;
-	unsigned int not_jump_count;
 	
 	unsigned int cant_walk_imgs;
 	unsigned int cant_jump_imgs;
@@ -32,7 +22,7 @@ public:
 	string prefix_background;
 	string extension;
 
-	graphic_movement();
+	//graphic_movement();
 	void init();
 	void create_images_arr();
 	void load_walk_imgs();
@@ -42,6 +32,6 @@ public:
 	void do_jumping_step(Worm worm);
 	void load_jump_imgs();
 
-	~graphic_movement();
+	//~graphic_movement();
 };
 

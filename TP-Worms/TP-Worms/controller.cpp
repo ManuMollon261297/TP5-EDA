@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-void controller::dispatch(Cevent ev, vector<Worm>& Worms, graphic_movement graphic_handler)
+void controller::dispatch(Cevent ev, vector<Worm>& Worms, graphic_movement& graphic_handler)
 {
 	switch (ev.eventType)
 	{
@@ -11,7 +11,6 @@ void controller::dispatch(Cevent ev, vector<Worm>& Worms, graphic_movement graph
 		for (int i = 0; i < Worms.size(); i++)
 		{
 			Worms[i].uData = ev.ud;
-
 			Worms[i].startMoving();
 		}
 	} break;

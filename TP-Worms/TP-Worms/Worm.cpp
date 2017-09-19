@@ -9,6 +9,7 @@ Worm::Worm()
 	frameCount = 0;
 	state = IDLE;
 	uData = 0;
+	key_down = false;
 }
 
 void Worm::startMoving(void)
@@ -76,11 +77,17 @@ void Worm::update(void)
 	{
 		case IDLE:
 		{
+			frameCount = 0;
 			//nada
 		} break;
 		case MOVING:
 		{
 			//calculo prox pos
+			if (frameCount == 50)
+			{
+				state = IDLE;
+				frameCount = 0;
+			}
 		} break;
 		case MONITOR_MOVING:
 		{
@@ -102,17 +109,24 @@ void Worm::update(void)
 			if (frameCount == 50)
 			{
 				state = IDLE;
+				frameCount = 0;
 			}
 		} break;
 		case JUMPING:
 		{
 			//calcular prox pos
+			if (frameCount == 50)
+			{
+				state = IDLE;
+				frameCount = 0;
+			}
 		} break;
 		case END_JUMPING:
 		{
 			if (frameCount == 50)
 			{
 				state = IDLE;
+				frameCount = 0;
 			}
 		} break;
 	}

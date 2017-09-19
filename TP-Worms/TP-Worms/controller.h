@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Cevent.h"
-#include "graphic.h"
 #include "graphic_movement.h"
 #include "Worm.h"
 
@@ -17,7 +16,7 @@
 class controller
 {
 public:
-	void dispatch(Cevent ev, vector<Worm>& Worms, graphic_movement graphic_handler);
+	void dispatch(Cevent ev, vector<Worm>& Worms, graphic_movement& graphic_handler);
 	Cevent getNextEvent(ALLEGRO_EVENT_QUEUE * event_queue);
 private:
 	ALLEGRO_EVENT evs;

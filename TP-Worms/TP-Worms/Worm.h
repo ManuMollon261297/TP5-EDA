@@ -26,6 +26,7 @@ public:
 	bool getSentido(void);
 	const bool left = false;
 	const bool right = true;
+	bool key_down;
 private:
 	position pos;
 	Physics physicsData;
