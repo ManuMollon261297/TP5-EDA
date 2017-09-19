@@ -20,6 +20,9 @@ private:
 public:
 	double px;
 	double py;
+	double start_x;
+	double start_y;
+
 
 	bool orientation; // 0 gusano mira izquierda, 1 gusano mira derecha
 

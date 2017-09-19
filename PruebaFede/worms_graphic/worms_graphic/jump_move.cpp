@@ -1,7 +1,9 @@
 #include "jump_move.h"
 #include <cmath>
-#define JUMP_ANG ((60.0*3.1415)/180)
-#define JUMP_VEL (4.5/50)
+#define PI 3.14159265358979323846
+#define JUMP_ANG ((60.0*PI)/180.0)
+#define JUMP_VEL (4.5)
+#define JUMP_GRA 0.24
 
 unsigned int cant_jump_imgs = 10;
 enum { NOT_JUMPING, JUMPING, LANDING };
@@ -58,17 +60,18 @@ void jump_move::do_jumping_step() {
 		else {
 			not_jump_count = 0;
 			js_state = JUMPING; // Si termine el no motion state voy a warmup
+			start_x = px; 
+			start_y = py;
 		}
 
 		break;
 	case JUMPING: // deberia saltar y saltar mientras esta saltando
 		if (jump_count < 33) {
-
+			px = start_x + JUMP_VEL*cos(JUMP_ANG)*((double)jump_count);
+			py = start_y - JUMP_VEL*sin(JUMP_ANG)*((double)jump_count) + (0.5)*(JUMP_GRA)*pow((jump_count), 2);
+			printf("%f %f\n", px, py);
 			if (jump_count >= 11) {
 				//Calculo de next position
-				px = 100.0 - JUMP_VEL*cos((double)JUMP_ANG)*(((double)jump_count - 11.0) / 50.0);
-				py = 100.0 - JUMP_VEL*sin((double)JUMP_ANG)*(((double)jump_count - 11.0) / 50.0) + (0.5)*( 0.24)*pow(((((double)jump_count - 11.0) / 50.0)),2);
-				printf("%f %f\n", px, py);
 				jump_count++;
 				al_draw_bitmap(jump_img_lib[wjumpingseq_arr[8]], px, py, orientation);
 				// 8 es el fijo que se queda saltando
@@ -86,7 +89,7 @@ void jump_move::do_jumping_step() {
 
 	case LANDING:
 		if (landing_count < 17) {
-			al_draw_bitmap(jump_img_lib[wlandingseq_arr[landing_count] - 1], px, py, orientation);
+			al_draw_bitmap(jump_img_lib[wlandingseq_arr[landing_count] - 1], px, py=100, orientation);
 			landing_count++;
 		}
 		else {

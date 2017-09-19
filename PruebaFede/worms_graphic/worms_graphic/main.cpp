@@ -81,7 +81,7 @@ int main(void) {
 				//jmv.px++;
 				//jmv.py++;
 				
-				jmv.orientation = 0;
+				jmv.orientation = 1;
 				al_flip_display();
 				break;
 			}
