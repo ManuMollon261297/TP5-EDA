@@ -21,6 +21,7 @@ public:
 	void update(void);
 	char uData;
 	position getPos(void);
+	void setPos(position newPos);
 	unsigned int getState(void);
 	unsigned int getFrameCount(void);
 	bool getSentido(void);

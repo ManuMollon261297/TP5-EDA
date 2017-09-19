@@ -82,7 +82,7 @@ void Worm::update(void)
 		} break;
 		case MOVING:
 		{
-			//calculo prox pos
+			//agregar calculo de walking
 			if (frameCount == 50)
 			{
 				state = IDLE;
@@ -114,7 +114,7 @@ void Worm::update(void)
 		} break;
 		case JUMPING:
 		{
-			//calcular prox pos
+			//agregar calculo de jumping
 			if (frameCount == 50)
 			{
 				state = IDLE;
@@ -143,6 +143,11 @@ void Worm::setKeys(char right_, char left_, char up_)
 position Worm::getPos()
 {
 	return pos;
+}
+
+void Worm::setPos(position newPos)
+{
+	pos = newPos;
 }
 
 unsigned int Worm::getState()
