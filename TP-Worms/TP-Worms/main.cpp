@@ -95,6 +95,6 @@ int main(void)
 	} while (ev.eventType != QUIT);
 
 	//cierro allegro
-	//al_destroy_display(display);
+	al_destroy_display(display);
 	return 0;
 }

@@ -1,5 +1,6 @@
 #pragma once
-#include "Physics.h"
+
+#define MOV 9
 
 enum { IDLE, MOVING, MONITOR_MOVING, END_MOVEMENT, JUMPING, END_JUMPING };
 
@@ -30,7 +31,6 @@ public:
 	bool key_down;
 private:
 	position pos;
-	Physics physicsData;
 	bool sentido;
 	unsigned int frameCount;
 	unsigned int state;

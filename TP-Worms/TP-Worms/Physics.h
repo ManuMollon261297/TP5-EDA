@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Worm.h"
 #define PI 3.14159265358979323846
 #define JUMP_VEL (4.5)
 

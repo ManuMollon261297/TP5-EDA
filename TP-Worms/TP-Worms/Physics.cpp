@@ -57,8 +57,8 @@ void Physics::updateWalk(Worm& worm)
 void Physics::updateJump(Worm& worm)
 {
 	position newPos;
-	newPos.x = worm.getPos().x + JUMP_VEL*cos(jumpAngle)*((double)worm.getFrameCount());
-	newPos.y = worm.getPos().y - JUMP_VEL*sin(jumpAngle)*((double)worm.getFrameCount()) + (0.5)*(gravity)*pow((worm.getFrameCount), 2);
+	newPos.x = worm.getPos().x + JUMP_VEL*cos(jumpAngle)*((double)worm.getFrameCount()); 
+	newPos.y = worm.getPos().y - JUMP_VEL*sin(jumpAngle)*((double)worm.getFrameCount()) + (0.5)*(gravity)*pow((worm.getFrameCount()), 2);
 	worm.setPos(newPos);
 }
 

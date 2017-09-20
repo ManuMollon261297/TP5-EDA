@@ -82,7 +82,7 @@ void graphic_movement::load_background()
 }
 
 
-void graphic_movement::do_jumping_step(Worm worm) {
+void graphic_movement::do_jumping_step(Worm &worm) {
 
 	switch (worm.getState()) {
 	case IDLE:
@@ -118,7 +118,7 @@ void graphic_movement::do_jumping_step(Worm worm) {
 	
 }
 
-void graphic_movement::do_walking_step(Worm worm) {
+void graphic_movement::do_walking_step(Worm &worm) {
 
 	unsigned int aux = worm.getState();
 
@@ -144,6 +144,21 @@ void graphic_movement::do_walking_step(Worm worm) {
 			al_draw_bitmap(walk_img_lib[wwalkingseq_arr[worm.getFrameCount() -8] -1], worm.getPos().x, worm.getPos().y, worm.getSentido());
 
 		}
+
+		/*if (worm.getFrameCount() == 22 || worm.getFrameCount() == 36 || worm.getFrameCount() == 49) {
+			position	aux;
+			//agregar calculo de walking
+			if (worm.getSentido() == worm.left) {
+				aux.x = worm.getPos().x - MOV;
+				aux.y = worm.getPos().y;
+				worm.setPos(aux);
+			}
+			else {
+				aux.x = worm.getPos().x + MOV;
+				aux.y = worm.getPos().y;
+				worm.setPos(aux);
+			}
+		}*/
 		break;
 	case END_MOVEMENT:
 		if (worm.getFrameCount() >= 5 && worm.getFrameCount() < 8) {

@@ -28,8 +28,8 @@ public:
 	void load_walk_imgs();
 	void load_background();
 	void flip_background();
-	void do_walking_step(Worm worm);
-	void do_jumping_step(Worm worm);
+	void do_walking_step(Worm &worm);
+	void do_jumping_step(Worm &worm);
 	void load_jump_imgs();
 
 	//~graphic_movement();

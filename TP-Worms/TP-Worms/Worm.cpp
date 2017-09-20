@@ -1,6 +1,8 @@
 #include "Worm.h"
 #include <cstdlib>
 
+
+
 Worm::Worm()
 {
 	pos.x = 701 + (double)(rand()) / ((double)(RAND_MAX / (1212 -701)));
@@ -82,7 +84,6 @@ void Worm::update(void)
 		} break;
 		case MOVING:
 		{
-			//agregar calculo de walking
 			if (frameCount == 50)
 			{
 				state = IDLE;

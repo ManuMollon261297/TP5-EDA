@@ -1,4 +1,5 @@
 #include "graphic.h"
+#define MOV 9
 
 enum { NOMOTION, WARMUP, WALKING };
 const unsigned int cant_images = 15;
@@ -78,6 +79,7 @@ void graphic::do_walking_step() {
 			printf("I = %d\n", i);
 			al_draw_bitmap(images_lib[wwalkingseq_arr[walking_count] - 1], 100.0, 100.0, 0);
 			walking_count++;
+
 		}
 		else {
 			walking_count = 0;

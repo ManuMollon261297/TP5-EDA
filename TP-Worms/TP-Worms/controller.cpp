@@ -8,7 +8,7 @@ void controller::dispatch(Cevent ev, vector<Worm>& Worms, graphic_movement& grap
 	{
 	case PRESS_MOVE:
 	{
-		for (int i = 0; i < Worms.size(); i++)
+		for (unsigned int i = 0; i < Worms.size(); i++)
 		{
 			Worms[i].uData = ev.ud;
 			Worms[i].startMoving();
@@ -16,7 +16,7 @@ void controller::dispatch(Cevent ev, vector<Worm>& Worms, graphic_movement& grap
 	} break;
 	case RELEASE_MOVE:
 	{
-		for (int i = 0; i < Worms.size(); i++)
+		for (unsigned int i = 0; i < Worms.size(); i++)
 		{
 			Worms[i].uData = ev.ud;
 			Worms[i].stopMoving();
@@ -24,7 +24,7 @@ void controller::dispatch(Cevent ev, vector<Worm>& Worms, graphic_movement& grap
 	} break;
 	case PRESS_JUMP:
 	{
-		for (int i = 0; i < Worms.size(); i++)
+		for (unsigned int i = 0; i < Worms.size(); i++)
 		{
 			Worms[i].uData = ev.ud;
 			Worms[i].startJumping();
@@ -32,7 +32,7 @@ void controller::dispatch(Cevent ev, vector<Worm>& Worms, graphic_movement& grap
 	} break;
 	case RELEASE_JUMP:
 	{
-		for (int i = 0; i < Worms.size(); i++)
+		for (unsigned int i = 0; i < Worms.size(); i++)
 		{
 			Worms[i].uData = ev.ud;
 			Worms[i].stopJumping();
@@ -41,7 +41,7 @@ void controller::dispatch(Cevent ev, vector<Worm>& Worms, graphic_movement& grap
 	case REFRESH:
 	{
 		graphic_handler.flip_background();
-		for (int i = 0; i < Worms.size(); i++)
+		for (unsigned int i = 0; i < Worms.size(); i++)
 		{
 			Worms[i].update();
 			//agregar fondo
