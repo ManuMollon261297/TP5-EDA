@@ -1,9 +1,12 @@
-﻿  Worm.cpp
-  main.cpp
-  graphic_movement.cpp
-  graphic.cpp
-  controller.cpp
-  Cevent.cpp
+﻿  main.cpp
+  Worm.cpp
   Generando código...
-  TP-Worms.vcxproj -> C:\Users\Federico\Desktop\ITBA\EDA\Tp5\TP5-EDA-master\TP-Worms\Debug\TP-Worms.exe
-  TP-Worms.vcxproj -> C:\Users\Federico\Desktop\ITBA\EDA\Tp5\TP5-EDA-master\TP-Worms\Debug\TP-Worms.pdb (Partial PDB)
+  Compilando...
+  graphic_movement.cpp
+c:\users\joa-m\onedrive\documentos\github\tp5-eda\tp-worms\tp-worms\graphic_movement.cpp(38): warning C4018: '<': no coinciden signed/unsigned
+c:\users\joa-m\onedrive\documentos\github\tp5-eda\tp-worms\tp-worms\graphic_movement.cpp(41): warning C4018: '<': no coinciden signed/unsigned
+  controller.cpp
+  Physics.cpp
+  Generando código...
+  TP-Worms.vcxproj -> C:\Users\joa-m\OneDrive\Documentos\GitHub\TP5-EDA\TP-Worms\Debug\TP-Worms.exe
+  TP-Worms.vcxproj -> C:\Users\joa-m\OneDrive\Documentos\GitHub\TP5-EDA\TP-Worms\Debug\TP-Worms.pdb (Partial PDB)

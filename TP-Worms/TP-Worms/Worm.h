@@ -1,6 +1,7 @@
 #pragma once
 
 #define MOV 9
+#include "Physics.h"
 
 enum { IDLE, MOVING, MONITOR_MOVING, END_MOVEMENT, JUMPING, END_JUMPING };
 
@@ -30,10 +31,14 @@ public:
 	const bool right = true;
 	bool key_down;
 private:
+	Physics physics_data;
 	position pos;
+	position old_pos;
 	bool sentido;
 	unsigned int frameCount;
 	unsigned int state;
+	const double xMax = 1212;
+	const double xMin = 707;
 
 	struct data
 	{

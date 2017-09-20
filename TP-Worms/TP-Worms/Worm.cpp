@@ -1,11 +1,11 @@
 #include "Worm.h"
 #include <cstdlib>
-
-
+#include <iostream>
+using namespace std;
 
 Worm::Worm()
 {
-	pos.x = 701 + (double)(rand()) / ((double)(RAND_MAX / (1212 -701)));
+	pos.x = xMin + (double)(rand()) / ((double)(RAND_MAX / (xMax -xMin)));
 	sentido = (bool) ((int)(pos.x) % 2);
 	pos.y = 616;
 	frameCount = 0;
@@ -54,6 +54,7 @@ void Worm::startJumping(void)
 		{
 			state = JUMPING;
 			frameCount = 0;
+			old_pos = pos;
 		}
 		else if (state == END_JUMPING)
 		{
@@ -89,6 +90,25 @@ void Worm::update(void)
 				state = IDLE;
 				frameCount = 0;
 			}
+			if (frameCount == 22 || frameCount == 36 || frameCount == 50) {
+				position newPos;
+				newPos.x = 0; 
+				newPos.y = pos.y;
+				if (getSentido() == left)
+				{
+					newPos.x = pos.x - MOV;
+
+				}
+				else
+				{
+					newPos.x = pos.x + MOV;
+				}
+
+				cout << newPos.x << newPos.y << endl;
+				setPos(newPos);
+			}
+			
+			
 		} break;
 		case MONITOR_MOVING:
 		{
@@ -121,9 +141,37 @@ void Worm::update(void)
 				state = IDLE;
 				frameCount = 0;
 			}
+
+				if (frameCount > 5 &&  frameCount < 33 ) {
+					position newPos;
+				
+					newPos.x = 0;
+					newPos.y = pos.y;
+					newPos.x = old_pos.x -  pow(-1,sentido)* (JUMP_VEL*cos(physics_data.jumpAngle)*((double) frameCount) );
+					newPos.y = old_pos.y - JUMP_VEL*sin(physics_data.jumpAngle)*((double) frameCount) + (0.5)*(physics_data.gravity)*pow(frameCount, 2);
+					if(frameCount == 32){
+						newPos.y = old_pos.y;
+					}
+					cout << "deltay : " << -JUMP_VEL*sin(physics_data.jumpAngle)*((double)32) + (0.5)*(physics_data.gravity)*pow(32, 2) << endl;
+					setPos(newPos);
+				}
+			
 		} break;
 		case END_JUMPING:
 		{
+			if (frameCount > 5 && frameCount < 33) {
+				position newPos;
+
+				newPos.x = 0;
+				newPos.y = pos.y;
+				newPos.x = old_pos.x - pow(-1, sentido)*JUMP_VEL*cos(physics_data.jumpAngle)*((double)frameCount);
+				newPos.y = old_pos.y - JUMP_VEL*sin(physics_data.jumpAngle)*((double)frameCount) + (0.5)*(physics_data.gravity)*pow(frameCount, 2);
+				if (frameCount == 32) {
+					newPos.y = old_pos.y;
+				}
+				cout << "deltay : " << -JUMP_VEL*sin(physics_data.jumpAngle)*((double)32) + (0.5)*(physics_data.gravity)*pow(32, 2) << endl;
+				setPos(newPos);
+			}
 			if (frameCount == 50)
 			{
 				state = IDLE;

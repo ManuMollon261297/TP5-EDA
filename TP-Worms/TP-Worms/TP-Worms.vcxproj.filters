@@ -21,13 +21,13 @@
     <ClInclude Include="Cevent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="graphic.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="graphic_movement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,13 +41,13 @@
     <ClCompile Include="Cevent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="graphic.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="graphic_movement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -40,25 +40,25 @@ double Physics::getxMin(void)
 	return Xmin;
 }
 
-void Physics::updateWalk(Worm& worm)
-{
-	position newPos;
-	if (worm.getSentido() == worm.left)
-	{
-		newPos.x = worm.getPos().x - MOV;
-	}
-	else
-	{
-		newPos.y = worm.getPos().y + MOV;
-	}
-	worm.setPos(newPos);
-}
-
-void Physics::updateJump(Worm& worm)
-{
-	position newPos;
-	newPos.x = worm.getPos().x + JUMP_VEL*cos(jumpAngle)*((double)worm.getFrameCount()); 
-	newPos.y = worm.getPos().y - JUMP_VEL*sin(jumpAngle)*((double)worm.getFrameCount()) + (0.5)*(gravity)*pow((worm.getFrameCount()), 2);
-	worm.setPos(newPos);
-}
+//void Physics::updateWalk(Worm& worm)
+//{
+//	position newPos;
+//	if (worm.getSentido() == worm.left)
+//	{
+//		newPos.x = worm.getPos().x - MOV;
+//	}
+//	else
+//	{
+//		newPos.y = worm.getPos().y + MOV;
+//	}
+//	worm.setPos(newPos);
+//}
+//
+//void Physics::updateJump(Worm& worm)
+//{
+//	position newPos;
+//	newPos.x = worm.getPos().x + JUMP_VEL*cos(jumpAngle)*((double)worm.getFrameCount()); 
+//	newPos.y = worm.getPos().y - JUMP_VEL*sin(jumpAngle)*((double)worm.getFrameCount()) + (0.5)*(gravity)*pow((worm.getFrameCount()), 2);
+//	worm.setPos(newPos);
+//}
 

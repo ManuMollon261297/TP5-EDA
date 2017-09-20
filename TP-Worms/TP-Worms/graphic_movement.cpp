@@ -8,21 +8,9 @@ const unsigned int wwalkingseq_arr[42] = { 4,5,6,7,8,9,10,11,11,12,13,14,15,4 , 
 const unsigned int wjumpingseq_arr[33] = { 1,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3 };
 const unsigned int wlandingseq_arr[17] = { 3,3,4,4,4,5,5,5,6,6,7,7,8,8,8,8,9 };
 
-void graphic_movement::create_images_arr() {
+graphic_movement::graphic_movement()
+{
 
-	walk_img_lib = new ALLEGRO_BITMAP*[cant_walk_imgs];
-	jump_img_lib = new ALLEGRO_BITMAP*[cant_jump_imgs];
-}
-
-void graphic_movement::init() {
-	
-	prefix_walk = "Worms Images/wwalking/wwalk-F";
-	prefix_jump = "Worms Images/wjump/wjump-F";
-	prefix_background = "Worms Images/Scenario";
-	extension = ".png";
-	cant_walk_imgs = 15;
-	cant_jump_imgs = 10;
-	/*
 	for (unsigned int i = 0; i < cant_walk_imgs; i++) {
 		walk_img_lib[i] = nullptr;
 	}
@@ -30,13 +18,21 @@ void graphic_movement::init() {
 	for (unsigned int i = 0; i < cant_jump_imgs; i++) {
 		jump_img_lib[i] = nullptr;
 	}
-	*/
 	background = nullptr;
-
 
 }
 
-/*graphic_movement::~graphic_movement()
+void graphic_movement::init() {
+	
+	prefix_walk = "Worms Images/wwalking/wwalk-F";
+	prefix_jump = "Worms Images/wjump/wjump-F";
+	prefix_background = "Worms Images/Scenario";
+	prefix_backgroundwoalpha = "Worms Images/background2";
+	extension = ".png";
+	
+}
+
+graphic_movement::~graphic_movement()
 {
 
 	for (int i = 0; i < cant_walk_imgs; i++) {
@@ -47,16 +43,16 @@ void graphic_movement::init() {
 	}
 
 	
-	delete[] walk_img_lib;
-	delete[] jump_img_lib;
+	//delete[] walk_img_lib;
+	//delete[] jump_img_lib;
 
 }
-*/
+
 
 
 
 void graphic_movement::load_walk_imgs() {
-	for (unsigned int i = 0; i < cant_walk_imgs; i++) { // el 1 es por F1, F2.. etc
+	for (unsigned int i = 0; i < 15; i++) { // el 1 es por F1, F2.. etc
 
 		string aux = prefix_walk + to_string(i+1) + extension;
 		printf("%s\n", &aux[0]);
@@ -67,7 +63,7 @@ void graphic_movement::load_walk_imgs() {
 
 void graphic_movement::load_jump_imgs() {
 
-	for (unsigned int i = 0; i < cant_jump_imgs; i++) { // el 1 es por F1, F2.. etc
+	for (unsigned int i = 0; i < 10; i++) { // el 1 es por F1, F2.. etc
 		string extension = ".png";
 		string aux = prefix_jump + to_string(i + 1) + extension;
 		printf("%s\n", &aux[0]);
@@ -80,6 +76,13 @@ void graphic_movement::load_background()
 	string aux = prefix_background + extension;
 	background = al_load_bitmap(&aux[0]);
 }
+/*
+void graphic_movement::load_backgroundwoalpha()
+{
+	string aux2 = prefix_backgroundwoalpha + extension;
+	backgroundwoalpha = al_load_bitmap(&aux2[0]);
+}
+*/
 
 
 void graphic_movement::do_jumping_step(Worm &worm) {
@@ -125,8 +128,10 @@ void graphic_movement::do_walking_step(Worm &worm) {
 
 	switch (aux) {
 	case IDLE:
-		al_draw_bitmap(walk_img_lib[0], worm.getPos().x, worm.getPos().y, worm.getSentido());
-
+	
+			al_draw_bitmap(walk_img_lib[0], worm.getPos().x, worm.getPos().y, worm.getSentido());
+		
+		
 		break;
 	case MONITOR_MOVING:
 		
@@ -145,20 +150,7 @@ void graphic_movement::do_walking_step(Worm &worm) {
 
 		}
 
-		/*if (worm.getFrameCount() == 22 || worm.getFrameCount() == 36 || worm.getFrameCount() == 49) {
-			position	aux;
-			//agregar calculo de walking
-			if (worm.getSentido() == worm.left) {
-				aux.x = worm.getPos().x - MOV;
-				aux.y = worm.getPos().y;
-				worm.setPos(aux);
-			}
-			else {
-				aux.x = worm.getPos().x + MOV;
-				aux.y = worm.getPos().y;
-				worm.setPos(aux);
-			}
-		}*/
+		
 		break;
 	case END_MOVEMENT:
 		if (worm.getFrameCount() >= 5 && worm.getFrameCount() < 8) {
@@ -179,3 +171,8 @@ void graphic_movement::flip_background()
 {
 	al_draw_bitmap(background, 0, 0, 0);
 }
+
+/*
+void graphic_movement::flip_backgroundwoalpha() {
+	al_draw_bitmap(backgroundwoalpha, 0, 0, 0);
+} */

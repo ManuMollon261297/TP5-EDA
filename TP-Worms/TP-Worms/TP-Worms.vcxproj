@@ -138,16 +138,16 @@
   <ItemGroup>
     <ClInclude Include="Cevent.h" />
     <ClInclude Include="controller.h" />
-    <ClInclude Include="graphic.h" />
     <ClInclude Include="graphic_movement.h" />
+    <ClInclude Include="Physics.h" />
     <ClInclude Include="Worm.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cevent.cpp" />
     <ClCompile Include="controller.cpp" />
-    <ClCompile Include="graphic.cpp" />
     <ClCompile Include="graphic_movement.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Worm.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -68,7 +68,7 @@ int main(void)
 
 	graphic_movement graphic_handler;
 
-	graphic_handler.create_images_arr();
+//	graphic_handler.create_images_arr();
 
 	graphic_handler.init();
 

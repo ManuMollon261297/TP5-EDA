@@ -40,6 +40,7 @@ void controller::dispatch(Cevent ev, vector<Worm>& Worms, graphic_movement& grap
 	} break;
 	case REFRESH:
 	{
+		//graphic_handler.flip_backgroundwoalpha();
 		graphic_handler.flip_background();
 		for (unsigned int i = 0; i < Worms.size(); i++)
 		{
